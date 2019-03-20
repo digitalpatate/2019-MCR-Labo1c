@@ -1,3 +1,8 @@
+/**
+ * @file FilledBouncerFactory.java
+ * @author Page Didier & Stalder Nicodème
+ * @date 12.03.19
+ */
 package Factory;
 
 import java.awt.*;
@@ -5,17 +10,21 @@ import java.awt.*;
 import Bouncer.*;
 import Renderer.*;
 
+/**
+ * Dans le cours, c'est dit qu'habituellement une seule instance d’une fabrique concrète est créée.
+ * Donc, on a implementé la fabrique concrète comme un sigleton
+ */
+public class FilledBouncerFactory extends BouncerFactory {
 
-public class FilledShapeFactory extends ShapeFactory {
-    private static FilledShapeFactory instance;
+    private static FilledBouncerFactory instance;
+
+    // Rend le constructeur privé
+    private FilledBouncerFactory(){}
 
 
-    private FilledShapeFactory(){}
-
-
-    public static FilledShapeFactory getInstance(){
+    public static FilledBouncerFactory getInstance(){
         if(instance == null){
-            instance = new FilledShapeFactory();
+            instance = new FilledBouncerFactory();
         }
         return instance;
     }
@@ -26,8 +35,8 @@ public class FilledShapeFactory extends ShapeFactory {
         return new Circle(maxPosX,maxPosY,maxSize) {
             @Override
             public Renderable getRenderer() {
-
-                return FilledShapeRenderer.getInstance();
+                // on créer des formes pleines dans cet factory, donc on renvoie le renderer de forme pleine
+                return FilledRenderer.getInstance();
             }
 
             @Override
@@ -44,7 +53,7 @@ public class FilledShapeFactory extends ShapeFactory {
             @Override
             public Renderable getRenderer() {
 
-                return FilledShapeRenderer.getInstance();
+                return FilledRenderer.getInstance();
             }
 
             @Override

@@ -1,3 +1,8 @@
+/**
+ * @file Displayer.java
+ * @author Pier Donini
+ * @date 12.03.19
+ */
 package Displayer;
 
 import java.awt.Graphics2D;

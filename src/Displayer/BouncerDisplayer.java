@@ -1,12 +1,16 @@
+/**
+ * @file BouncerDisplayer.java
+ * @author Page Didier & Stalder Nicodème
+ * @date 12.03.19
+ */
 package Displayer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
-
-
-import java.awt.image.BufferedImage;
-
+/**
+ * Singleton, qui représente la fenêtre d'affichage
+ */
 public class BouncerDisplayer implements Displayer{
 
     private static BouncerDisplayer instance;
@@ -14,19 +18,19 @@ public class BouncerDisplayer implements Displayer{
     private JFrame frame;
     private JPanel panel;
 
-    private final static int panelHeight=500;
-    private final static int panelWidth =500;
+    private final static int panelWidth =350;
+    private final static int panelHeight=350;
+
     private final static Color panelColor=Color.white;
 
-    private BufferedImage image;
+    private Image image;
+
 
     private BouncerDisplayer(){
         frame  = new JFrame();
         panel  = new JPanel();
 
-
-
-        panel.setPreferredSize(new Dimension(panelHeight, panelWidth));
+        panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
         panel.setBackground(panelColor);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,12 +38,7 @@ public class BouncerDisplayer implements Displayer{
         frame.setResizable(true);
         frame.pack();
         frame.setVisible(true);
-
-        image = (BufferedImage) panel.createImage(panelHeight, panelWidth);
-
-
-        Graphics2D graphics = image.createGraphics();
-        graphics.drawImage(image, null, panelHeight, panelWidth);
+        setTitle("Bouncer");
     }
 
     public static Displayer getInstance(){
@@ -49,7 +48,7 @@ public class BouncerDisplayer implements Displayer{
         return instance;
     }
 
-     @Override
+    @Override
     public int getWidth() {
         return panel.getWidth();
     }
@@ -59,12 +58,13 @@ public class BouncerDisplayer implements Displayer{
     }
     @Override
     public Graphics2D getGraphics() {
+
         return (Graphics2D) image.getGraphics();
     }
     @Override
     public void repaint() {
         panel.getGraphics().drawImage(image, 0, 0, null);
-        image = (BufferedImage) panel.createImage(panel.getWidth(), panel.getHeight());
+        image = panel.createImage(panel.getWidth(), panel.getHeight());
     }
     @Override
     public void setTitle(String str) {

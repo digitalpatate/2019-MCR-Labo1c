@@ -1,3 +1,8 @@
+/**
+ * @file Renderable.java
+ * @author Pier Donini
+ */
+
 package Renderer;
 
 import java.awt.Graphics2D;

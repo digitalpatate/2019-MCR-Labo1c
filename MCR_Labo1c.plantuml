@@ -2,107 +2,100 @@
 
 title __MCR_LABO1C's Class Diagram__\n
 
-  package  {
-    interface Bouncer.Bouncable {
+  package Bouncer {
+    interface Bouncable {
     }
   }
   
 
-  package  {
-    class Bouncer.BounceApp {
+  package Bouncer {
+    class BounceApp {
     }
   }
   
 
-  package  {
-    abstract class Bouncer.Bouncer {
+  package Bouncer {
+    abstract class Bouncer {
     }
   }
   
 
-  package  {
-    class Displayer.BouncerDisplayer {
+  package Displayer {
+    class BouncerDisplayer {
     }
   }
   
 
-  package  {
-    abstract class Bouncer.Circle {
+  package Factory {
+    abstract class BouncerFactory {
     }
   }
   
 
-  package  {
-    interface Displayer.Displayer {
+  package Renderer {
+    abstract class BouncerRenderer {
     }
   }
   
 
-  package  {
-    class Factory.EmptyShapeFactory {
+  package Bouncer {
+    abstract class Circle {
     }
   }
   
 
-  package  {
-    class Renderer.EmptyShapeRenderer {
+  package Displayer {
+    interface Displayer {
     }
   }
   
 
-  package  {
-    class Factory.FilledShapeFactory {
+  package Factory {
+    class EmptyBouncerFactory {
     }
   }
   
 
-  package  {
-    class Renderer.FilledShapeRenderer {
+  package Renderer {
+    class EmptyRenderer {
     }
   }
   
 
-  package  {
-    class MotionVector {
+  package Factory {
+    class FilledBouncerFactory {
     }
   }
   
 
-  package  {
-    interface Renderer.Renderable {
+  package Renderer {
+    class FilledRenderer {
     }
   }
   
 
-  package  {
-    abstract class Factory.ShapeFactory {
+  package Renderer {
+    interface Renderable {
     }
   }
   
 
-  package  {
-    abstract class Renderer.BouncerRenderer {
+  package Bouncer {
+    abstract class Square {
     }
   }
   
 
-  package  {
-    abstract class Bouncer.Square {
-    }
-  }
-  
-
-  Bouncer.BounceApp o-- Displayer.Displayer : displayer
-  Bouncer.Bouncer -up-|> Bouncer.Bouncable
-  Bouncer.Bouncer o-- MotionVector : mVector
-  Displayer.BouncerDisplayer -up-|> Displayer.Displayer
-  Bouncer.Circle -up-|> Bouncer.Bouncer
-  Factory.EmptyShapeFactory -up-|> Factory.ShapeFactory
-  Renderer.EmptyShapeRenderer -up-|> Renderer.Renderable
-  Factory.FilledShapeFactory -up-|> Factory.ShapeFactory
-  Renderer.FilledShapeRenderer -up-|> Renderer.Renderable
-  Renderer.BouncerRenderer -up-|> Renderer.Renderable
-  Bouncer.Square -up-|> Bouncer.Bouncer
+  BounceApp o-- Displayer : displayer
+  Bouncer -up-|> Bouncable
+  BouncerDisplayer -up-|> Displayer
+  BouncerRenderer -up-|> Renderable
+  Circle -up-|> Bouncer
+  EmptyBouncerFactory -up-|> BouncerFactory
+  EmptyRenderer -up-|> BouncerRenderer
+  FilledBouncerFactory -up-|> BouncerFactory
+  FilledRenderer -up-|> BouncerRenderer
+  Square -up-|> Bouncer
 
 
 right footer

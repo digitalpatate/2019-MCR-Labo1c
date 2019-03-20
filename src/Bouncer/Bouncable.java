@@ -1,3 +1,8 @@
+/**
+ * @file Bouncable.java
+ * @author Piere Donini
+ */
+
 package Bouncer;
 
 import Renderer.Renderable;
